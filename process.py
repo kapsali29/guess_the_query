@@ -34,7 +34,7 @@ def read_and_clean_training_data(file):
         return x_train, y_train
 
 
-def train_model(x_train, y_train):
+def _train_model(x_train, y_train):
     """
     Using that function you are able to train the Classifier
     :param x_train: train data
@@ -79,7 +79,7 @@ def clean_test_data(test_data, test_labels):
     return xtest, ytest
 
 
-def predict(xtest, ytest, clf):
+def _predict(xtest, ytest, clf):
     """
     That function returns the classifiers accuracy
     :param xtest: test data
@@ -89,11 +89,3 @@ def predict(xtest, ytest, clf):
     """
     predicted = clf.predict(xtest)
     return numpy.mean(predicted == ytest)
-
-
-x_train, y_train = read_and_clean_training_data("training.txt")
-clf = train_model(x_train, y_train)
-
-xtest, ytest = clean_test_data("x_test.txt", "y_test.txt")
-accuracy = predict(xtest, ytest, clf)
-print(accuracy)
